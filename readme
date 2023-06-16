@@ -1,0 +1,16 @@
+For margining frontend and backend
+npm init
+endpoing backend/server.js 
+npm i express mongoose dotenv
+
+///***install nodemone***///
+npm i nodemone
+
+change package.jason 
+"scripts":{
+"start":"node backend/server.js",
+"dev": "nodemone backend/server.js"
+}
+
+
+npm i bcryptjs jsonwebtoken validator nodemailer cookie-parser body-parser
