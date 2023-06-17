@@ -110,3 +110,123 @@ exports.resetPassword = catchAsyncError(async(req,res,next)=>{
         sendToken(user,200,res);
     });
         
+
+
+//get useDetails
+
+exports.getUserDetails = catchAsyncError(async(req,res,next)=>{
+    const user = await User.findById(req.user.id);
+
+    res.status(200).json({
+        success:true,
+        user,
+    });
+});
+
+
+//Update the UserPassword
+
+exports.updatePassword = catchAsyncError(async(req,res,next)=>{
+   
+    let user =await  User.findById(req.user.id).select("+password");
+  
+    //checking the old password
+
+    const isPasswordMatched =await user.comparePassword(req.body.oldpassword)
+    console.log(isPasswordMatched)
+    if(!isPasswordMatched){
+        return next(new errorHander("Old password is invalid",401))
+    }
+
+    //checking the passwords
+
+    if(req.body.newpassword!== req.body.confirmPassword){
+        return next(new errorHander("Password does not matched",201))
+    }
+
+    user.password=req.body.newpassword;
+   await user.save();
+   sendToken(user,200,res);
+
+})
+
+
+// Update Profile
+
+
+exports.updateUserProfile = catchAsyncError(async(req,res,next)=>{
+    const fieldsToUpdate={
+        name:req.body.name,
+        email:req.body.email,
+    };
+    const updatedUser=await User.findByIdAndUpdate(req.user.id,fieldsToUpdate,{
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+    res.status(200).json({
+        success:true,
+        message:"successfully uploaded",
+    })
+})
+
+//get all user -- admin
+
+exports.getAllUser = catchAsyncError(async(req,res,next)=>{
+    const users=await User.find();
+    res.status(200).json({
+        success:true,
+        users,
+    });
+});
+
+//ger single user details -- admin
+
+
+exports.getSingleUser = catchAsyncError(async(req,res,next)=>{
+    const user = await User.findById(req.params.id);
+
+    if(!user){
+        return next(new errorHander(`User doen not exits with id${user.params.id}`,400))
+    }
+    res.status(200).json({
+        success:true,
+        user,
+    });
+});
+
+//update user role --admin
+
+exports.updateUser = catchAsyncError(async(req,res,next)=>{
+    const fieldsToUpdate={
+        name:req.body.name,
+        email:req.body.email,
+        role:req.body.role,
+    };
+    const updatedtheUser=await User.findByIdAndUpdate(req.params.id,fieldsToUpdate,{
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+    res.status(200).json({
+        success:true,
+        message:"successfully uploaded",
+    })
+})
+
+//delete a user --admin
+
+exports.deleteUser = catchAsyncError(async(req,res,next)=>{
+    const user = await User.findById(req.params.id);
+    if(!user){
+       return next(new errorHander("User does not exits",401))
+    }
+    await user.deleteOne();
+ 
+     res.status(200).json({
+    success:true,
+    message:"user deleted successfully",
+ });
+
+});
+
