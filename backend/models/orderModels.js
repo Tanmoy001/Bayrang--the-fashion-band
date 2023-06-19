@@ -22,9 +22,9 @@ const orderSchema = new mongoose.Schema({
             type:Number,
             required:true
         },
-        
+
     },
-    oderItems:[
+    orderItems:[
         {
             name:{
                 type:String,
@@ -43,7 +43,7 @@ const orderSchema = new mongoose.Schema({
                 type:String,
                 required:true,
             },
-            product_id:{
+            product:{
                 type:mongoose.Types.ObjectId,
                 ref:'Product',
                 required:true,
