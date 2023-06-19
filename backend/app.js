@@ -13,6 +13,11 @@ app.use("/api/v1",product)
 const user = require("./routes/userRoute");
 app.use("/api/v1",user)
 
+//**For the order */
+const order = require("./routes/orderRoute");
+app.use("/api/v1",order)
+
+
 //Middleware for error
 app.use(errorMiddleware);
 
