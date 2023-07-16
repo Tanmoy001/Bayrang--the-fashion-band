@@ -18,3 +18,8 @@ npm i bcryptjs jsonwebtoken validator nodemailer cookie-parser body-parser
 
 npm i axios react-alert react-alert-templete-basic react-helmet react-redux redux-thunk redux-devtools-extension react-router-dom
 overlay-navbar
+
+react helmet
+
+
+reducer action constants(for cleaness)

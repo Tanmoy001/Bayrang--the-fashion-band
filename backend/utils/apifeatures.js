@@ -33,7 +33,7 @@ class Apifeatures{
 
     pagination(){
         const page = parseInt(this.queryStr.page) || 1;
-        const limit = parseInt(this.queryStr.limit) || 5;
+        const limit = parseInt(this.queryStr.limit) || 8;
         this.query = this.query.skip((page-1)*limit).limit(limit);
         /* console.log(limit) */
         return this;
