@@ -17,7 +17,7 @@ import Loader from '../../layout/Loader/Loader'
 function Home() {
     const dispatch = useDispatch();
     const{loading, products}=useSelector(
-        (state)=>state.undefined
+        (state)=>state.products
         
     );
    
