@@ -286,5 +286,14 @@ text-align: center;
     .reviewCardComment {
       font: 300 5vw cursive;
     }
+    .CarouselImage{
+      height: 89%;
+    width: 90%;
+    margin: 0;
+    padding: 5%;
+    }
+    .css-1l7c0cy>div>div>div{
+      height: 100%;
+    }
   }
   

@@ -1,0 +1,25 @@
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    justify-content: center;
+    display: flex;
+    gap: 6px;
+  }
+  
+  .success {
+    background-color: #28a745;
+  }
+  
+  .warning {
+    background-color: #ffc107;
+  }
+  
+  .error {
+    background-color: #dc3545;
+  }
+  

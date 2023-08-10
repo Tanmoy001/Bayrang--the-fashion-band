@@ -9,6 +9,7 @@ router.route("/products").get(getAllProduct);
 router.route("/product/:id").get(getProduct);
 
 
+
 //Post for createProduct --Admin
 router.route("/product/new").post(isAuthenticatedUser,authorizeRoles("admin"),createProduct);
 //Put for updating product

@@ -1,30 +1,34 @@
 import React,{useEffect} from 'react'
 
 import{useSelector,useDispatch} from "react-redux"
-import { getProductDetails } from '../../actions/productAction';
+import { clearErrors, getProductDetails } from '../../actions/productAction';
 import Carousel from "react-material-ui-carousel"
 import MetaData from '../../layout/MetaData'
 import { useParams } from 'react-router-dom';
 import './productdetails.css'
 import ReactStars from 'react-rating-stars-component'
 import ReviewCard from './ReviewCard'
-
+import Alert from '../../layout/Alert/Alert';
 import Loader from '../../layout/Loader/Loader' 
 const Productdetails = () => {
     const { id } = useParams();
     console.log(id);
     const dispatch = useDispatch();
-    const{ product,loading}=useSelector(
+    const{ product,loading,error}=useSelector(
         (state)=>state.productDetails
         
     );
    
     useEffect(()=>{
+     
+      if(error){
+        Alert(error.type,error.message)
+        dispatch(clearErrors())
+      }
         dispatch(getProductDetails(id));
       
-    },[dispatch,id]);
+    },[dispatch,id,error]);
     const options = {
-
       edit:false,
       color:"rgba(20,20,20,0.1)",
       activeColor:"tomato",
