@@ -3,7 +3,7 @@ import'./home.css'
 import {CgMouse} from "react-icons/cg"
 import Product from './Product.js'
 import MetaData from '../../layout/MetaData'
-import {getProduct} from "../../actions/productAction"
+import {getProducthome} from "../../actions/productAction"
 import{useSelector,useDispatch} from "react-redux"
 import { useEffect } from 'react'
 import Loader from '../../layout/Loader/Loader'
@@ -20,10 +20,10 @@ function Home() {
         (state)=>state.products
         
     );
-   
+   let limit = 10;
     useEffect(()=>{
-        dispatch(getProduct());
-    },[dispatch]);
+        dispatch(getProducthome(limit));
+    },[dispatch,limit]);
     
     
     return (

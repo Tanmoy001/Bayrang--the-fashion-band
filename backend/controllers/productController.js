@@ -17,17 +17,24 @@ exports.createProduct = catchAsyncError( async(req,res,next)=>{
 //Get all products
 
 exports.getAllProduct=catchAsyncError( async(req,res,next)=>{
-    const productCount = await Product.countDocuments();
+    /* const productCount = await Product.countDocuments(); */
 
     const apifeatures = new Apifeatures(Product.find(),req.query)
     .search()
     .filter()
     .pagination();
+
+
+    // Get the count of searched items
+  const searchCount = await Product.find(apifeatures.query._conditions).countDocuments();
+ let productCount=searchCount
+
     const products = await apifeatures.query;
     res.status(200).json({
         status:"success",
         products,
-        productCount
+        productCount,
+        
     })
 })
 //Get product
