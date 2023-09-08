@@ -4,7 +4,7 @@
     
     box-shadow: inset 20px 20px 20px rgba(0,0,0,0.05), 25px 35px 20px rgba(0,0,0,0.05);
 }
-#photo{
+.picture #photo{
     height: 95vh;
     width: 60vw;
 }
@@ -68,7 +68,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 margin: auto;
-padding: 2vmax;
+padding: 1vmax;
 justify-content: space-evenly;
 height: 70%;
 }
@@ -174,4 +174,68 @@ background-color: rgb(179,66,46);
   
   .shiftToRight {
     transform: translateX(100%);
+  }
+  @media screen and (max-width:900px) {
+    .picture{
+        margin-right: 0;
+        z-index: 10;
+    width: 100%;
+    }
+    .picture #photo {
+        height: 95vh;
+        width: 100vw;
+        z-index: 1;
+    }
+    
+.LoginSignupBox>div>button{
+z-index: 15;
+position: relative;
+}
+    .LoginSignupContainer{
+        background-color: #fff;
+    }
+    .LoginSignupBox{
+        margin-left: 0;
+        width: 100vw;
+        height: 92vh;
+    }
+    .login_signUp_toggle{
+        
+        z-index: 15;
+    position: relative;
+    height: 7vmax;
+    }
+    .login_signUp_toggle>p{
+        height: 7vmax;
+        font: 300 1..5vmax "cursive";
+    }
+    .loginForm,
+    .signUpForm{
+        position: relative;
+    z-index: 15;
+        padding: 5vmax;
+    }
+    .loginForm>div>input,
+    .signUpForm>div>input   {
+    padding: 2.5vmax 5vmax;
+    font: 300 1.7vmax cursive;
+    }
+    .loginForm>div>svg,
+    .signUpForm>div>svg  {
+font-size: 2.8vmax;
+    }
+    #registerImage>img{
+        width: 8vmax;
+        border-radius: 100%;
+    }
+    #registerImage >input::file-sector-button{
+    height: 7vh;
+    font: 400 1.8vmax cursive;
+    }
+    .LoginBtn,
+    .signUpBtn{
+        font: 300 1.9vmax "Roboto";
+        padding: 1.8vmax;
+    }
+
   }

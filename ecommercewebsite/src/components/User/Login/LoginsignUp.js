@@ -1,14 +1,19 @@
-import React, { useRef ,useState} from 'react'
+import React, { useEffect, useRef ,useState} from 'react'
 import './loginsignup.css'
 import { BiLogoGmail} from 'react-icons/bi';
 import { PiPasswordLight} from 'react-icons/pi';
 import { RxAvatar} from 'react-icons/rx';
 
+import Loader from '../../../layout/Loader/Loader' 
+import { login,clearErrors } from '../../../actions/userAction';
 import { Link } from 'react-router-dom'
 import shopic from "./shopic.jpg"
 import profile from "./Profile.png"
+import { useDispatch, useSelector } from 'react-redux';
 
 function LoginsignUp() {
+    const dispatch = useDispatch();
+     const {error,loading}=useSelector((state)=>state.user)
     const loginTab = useRef(null)
     const registerTab = useRef(null)
     const switcherTab = useRef(null)
@@ -23,8 +28,9 @@ const {name,email,password}=user;
 const [avatar, setAvatar] = useState(profile);
 const [avatarPreview, setAvatarPreview] = useState(profile);
 
-const LoginSubmit=()=>{
-    console.log("Loginsubmit");
+const LoginSubmit=(e)=>{
+    e.preventDefault();
+    dispatch(login(loginEmail,loginPassword));
     }
 
 const registerSubmit=(e)=>{
@@ -49,9 +55,18 @@ const registerDataChange=(e)=>{
     reader.readAsDataURL(e.target.files[0])
 }
     else{
-        setUser((prevState)=>({...prevState,[e.target.name]:e.target.value}))
+        setUser((prevState)=>({...user,[e.target.name]:e.target.value}))
     }
 }
+
+useEffect(() => {
+
+    if(error){
+        alert(error);
+        console.log(error)
+        dispatch(clearErrors())
+    }
+}, [dispatch,error])
     const switchTabs=(e,tab)=>{
         if (tab === "login"){
             //            console.log("login")
@@ -68,22 +83,22 @@ const registerDataChange=(e)=>{
                        e.preventDefault();
             //            alert('hi')
             //                window.location="/";
-            switcherTab.current.classList.add("shiftToNeutral");
-            switcherTab.current.classList.remove("shiftToRight");
+            switcherTab.current.classList.add("shiftToRight");
+            switcherTab.current.classList.remove("shiftToNeutral");
             registerTab.current.classList.add("shiftToNeutralForm");
             loginTab.current.classList.add("shiftToLeft");
         }
 
     }
     return (
-    <>
-    
+        <>
+    {loading ? <Loader/>:(<>
     <div className="LoginSignupContainer">
     <div className='picture'>
         <img src={shopic} id="photo" alt=''/>
         </div>
     <div className='LoginSignupBox'>
-      
+    
         <div>
         <div className='login_signUp_toggle'>
             <p onClick={(e)=>switchTabs(e,"login")}>LOGIN</p>
@@ -130,13 +145,14 @@ const registerDataChange=(e)=>{
                 <img src={avatarPreview} alt='Avatar Preview'/>
                 <input type='file'name='avatar' accept='image/*' onChange={registerDataChange}/>
             </div>
-           {/*  <input type='submit' value="Register" className='signUpBtn' disabled={loading?true:false}/> */}
+             <input type='submit' value="Register" className='signUpBtn' /* disabled={loading?true:false} *//> 
 
         </form>
 
 
     </div>
     </div>
+    </>)}
     </>
   )
 }

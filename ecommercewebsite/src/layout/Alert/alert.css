@@ -9,6 +9,7 @@
     justify-content: center;
     display: flex;
     gap: 6px;
+    z-index: 25;
   }
   
   .success {

@@ -11,7 +11,8 @@ const Alert = ({ message, type }) => {
   return (
     showAlert && (
       <div className={`alert ${type}`}>
-        <p>{message}</p>
+        
+        <p>"Error"{message}</p>
         <button onClick={closeAlert}>X</button>
       </div>
     )
