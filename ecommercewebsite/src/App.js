@@ -12,6 +12,7 @@ import Alert from './layout/Alert/Alert';
 import Search from './layout/Search/Search';
 import Navbarpage from './components/navbar/Navbarpage';
 import LoginsignUp from './components/User/Login/LoginsignUp';
+import Profile from './components/User/Profile/Profile';
 function App() {
   useEffect(() => {
       WebFont.load({
@@ -35,6 +36,8 @@ function App() {
      <Route exact path="/alert" element={ <Alert type="success" message="Success message!" />}/> 
      <Route exact path="/search" element={ <Search/>}/>
      <Route exact path="/login" element={ <LoginsignUp/>}/>
+     
+     <Route exact path="/account" element={ <Profile/>}/>
   
     </Routes>
     

@@ -1,59 +1,75 @@
-/* import Button from 'react-bootstrap/Button'; */
+import React, { useState, useEffect } from 'react'
+import './navbar.css'
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { GiCoins } from 'react-icons/gi';
+
 import { AiOutlineSearch } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import { BsHandbag } from 'react-icons/bs';
-function Navbarpage() {
+import {
+    Link
+  } from "react-router-dom";
+  
+function Navbarpage({togglemode}) {
+  const [isVisible, setIsVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isVisible = prevScrollPos > currentScrollPos;
+      setPrevScrollPos(currentScrollPos);
+      setIsVisible(isVisible);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [prevScrollPos]); 
   return (
-    <>
-      {[ 'sm'].map((expand) => (
-        <Navbar key={expand} expand={expand} className="bg-body-tertiary">
-          <Container fluid>
-            <Navbar.Brand href="/">BayRang</Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-${expand}`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
-            >{/* 
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  BayRang
-                </Offcanvas.Title>
-    chrome-extension://pnhechapfaindjhompbnflcldabbghjo/html/nassh.html          </Offcanvas.Header> */}
-              <Offcanvas.Body>
-                <Nav className="justify-content-start flex-grow-1 pe-3">
-                  <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="/products">Products</Nav.Link>
-                  <Nav.Link href="/contact">Contact</Nav.Link>
-                  <Nav.Link href="/about">About</Nav.Link>
+     <nav style={{ display: isVisible ? 'block' : 'none' }}> 
+    <Navbar className='navbar' collapseOnSelect expand="lg" bg="blue" variant="dark">
+    <Container>
+        <GiCoins style={{marginRight: "15px",height:'20px',width:'20px'}}/>
+      <Navbar.Brand>BayRang</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="me-auto">
             
-                </Nav>
-                <Form className="d-flex">
-                  {/* <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success">Search</Button> */}
-                  <a href='/search'style={{justifyContent:'center',display:'flex'}}><AiOutlineSearch style={{height:'2vmax',width:'5rem'}}/></a>
-                  <a href='/card'style={{justifyContent:'center',display:'flex'}}><BsHandbag style={{height:'2vmax',width:'5rem'}}/></a>
-                  <a href='/login'style={{justifyContent:'center',display:'flex'}}><CgProfile style={{height:'2vmax',width:'5rem'}}/></a>
-              
-                </Form>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
-        </Navbar>
-      ))}
-    </>
-  );
+        <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/products">Products</Link></li>
+         <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li> 
+        <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
+         
+          
+        </Nav>
+        <div className="form-check form-switch">
+    {/*   <Button variant="outline-success">Search</Button>  */}
+    <div className='iconfunc'>
+    <Link className="nav-link" to="/search" style={{justifyContent:'center',display:'flex'}}><AiOutlineSearch style={{height:'2vmax',width:'5rem'}}/></Link>
+    <Link className="nav-link" to="/card" style={{justifyContent:'center',display:'flex'}}><BsHandbag style={{height:'2vmax',width:'5rem'}}/></Link>
+    <Link className="nav-link" to="/login" style={{justifyContent:'center',display:'flex'}}><CgProfile style={{height:'2vmax',width:'5rem'}}/></Link>
+           
+                {/*   <a href='/card'style={{justifyContent:'center',display:'flex'}}><BsHandbag style={{height:'2vmax',width:'5rem'}}/></a>
+                  <a href='/login'style={{justifyContent:'center',display:'flex'}}><CgProfile style={{height:'2vmax',width:'5rem'}}/></a> */}
+                  </div>
+</div>
+        {/* <Nav>
+          <Nav.Link href="#deets">More deets</Nav.Link>
+          <Nav.Link eventKey={2} href="#memes">
+            Dank memes
+          </Nav.Link>
+        </Nav> */}
+      </Navbar.Collapse>
+
+    </Container>
+  </Navbar>
+   </nav> 
+  )
 }
 
 export default Navbarpage;

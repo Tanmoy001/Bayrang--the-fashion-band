@@ -237,5 +237,12 @@ font-size: 2.8vmax;
         font: 300 1.9vmax "Roboto";
         padding: 1.8vmax;
     }
+    
+.loginForm>a{
+    color: rgb(173, 170, 170);
+}
+.loginForm>a:hover{
+    color: rgb(216, 213, 213);
+}
 
   }

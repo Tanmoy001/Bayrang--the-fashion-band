@@ -4,16 +4,20 @@ import { BiLogoGmail} from 'react-icons/bi';
 import { PiPasswordLight} from 'react-icons/pi';
 import { RxAvatar} from 'react-icons/rx';
 
+import { useNavigate  } from 'react-router-dom';
+
 import Loader from '../../../layout/Loader/Loader' 
-import { login,clearErrors } from '../../../actions/userAction';
+import { login,clearErrors,register } from '../../../actions/userAction';
 import { Link } from 'react-router-dom'
 import shopic from "./shopic.jpg"
 import profile from "./Profile.png"
 import { useDispatch, useSelector } from 'react-redux';
 
-function LoginsignUp() {
+function LoginsignUp({history}) {
+    
+  const navigate  = useNavigate ();
     const dispatch = useDispatch();
-     const {error,loading}=useSelector((state)=>state.user)
+     const {error,loading,isAuthenticated}=useSelector((state)=>state.user)
     const loginTab = useRef(null)
     const registerTab = useRef(null)
     const switcherTab = useRef(null)
@@ -34,13 +38,14 @@ const LoginSubmit=(e)=>{
     }
 
 const registerSubmit=(e)=>{
-    console.log('Register Submit');
+    
     e.preventDefault();
     const myForm = new FormData();
     myForm.set("name",name);
     myForm.set("email",email);
     myForm.set("password",password);
     myForm.set("avatar",avatar);
+    dispatch(register(myForm))
         }
 
 const registerDataChange=(e)=>{
@@ -63,10 +68,12 @@ useEffect(() => {
 
     if(error){
         alert(error);
-        console.log(error)
         dispatch(clearErrors())
     }
-}, [dispatch,error])
+    if(isAuthenticated){
+        navigate(`/account`);
+    }
+}, [dispatch,error,isAuthenticated,navigate ])
     const switchTabs=(e,tab)=>{
         if (tab === "login"){
             //            console.log("login")
