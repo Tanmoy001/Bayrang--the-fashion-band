@@ -6,13 +6,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import { GiCoins } from 'react-icons/gi';
 
 import { AiOutlineSearch } from 'react-icons/ai';
-import { CgProfile } from 'react-icons/cg';
+/* import { CgProfile } from 'react-icons/cg'; */
 import { BsHandbag } from 'react-icons/bs';
 import {
     Link
   } from "react-router-dom";
+import UserOptions from './UserOptions';
   
-function Navbarpage({togglemode}) {
+function Navbarpage({isAuthenticated,user}) {
   const [isVisible, setIsVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
@@ -52,7 +53,7 @@ function Navbarpage({togglemode}) {
     <div className='iconfunc'>
     <Link className="nav-link" to="/search" style={{justifyContent:'center',display:'flex'}}><AiOutlineSearch style={{height:'2vmax',width:'5rem'}}/></Link>
     <Link className="nav-link" to="/card" style={{justifyContent:'center',display:'flex'}}><BsHandbag style={{height:'2vmax',width:'5rem'}}/></Link>
-    <Link className="nav-link" to="/login" style={{justifyContent:'center',display:'flex'}}><CgProfile style={{height:'2vmax',width:'5rem'}}/></Link>
+    <Link className="nav-link" to="/login" style={{justifyContent:'center',display:'flex'}}><UserOptions isAuthenticated={isAuthenticated}user={user} style={{height:'2vmax',width:'5rem'}}/></Link>
            
                 {/*   <a href='/card'style={{justifyContent:'center',display:'flex'}}><BsHandbag style={{height:'2vmax',width:'5rem'}}/></a>
                   <a href='/login'style={{justifyContent:'center',display:'flex'}}><CgProfile style={{height:'2vmax',width:'5rem'}}/></a> */}

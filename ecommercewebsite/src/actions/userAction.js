@@ -1,5 +1,8 @@
 import axios from "axios"
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL, CLEAR_ERRORS, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAIL } from "../constants/userConstant"
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL, CLEAR_ERRORS, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAIL,LOAD_FAIL,
+LOAD_SUCCESS,LOAD_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAIL } from "../constants/userConstant"
+
+//LOGIN THE USE OR SIGNIN
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -17,6 +20,8 @@ export const login = (email, password) => async (dispatch) => {
   }
 }
 
+//SIGNUP OR REGISTER THE NEW USE 
+
 export const register = (userData) => async (dispatch) => {
   try {
     dispatch({ type: REGISTER_REQUEST })
@@ -31,7 +36,32 @@ export const register = (userData) => async (dispatch) => {
     dispatch({ type: REGISTER_FAIL, payload:error.response.data.error })
   }
 }
+//LOADING THE USER FROM COOKIES TO STATE
+export const loadUser = () =>async(dispatch)=>{
+  try {
+    dispatch({ type: LOAD_REQUEST })
+   
+    const res = await axios.get('/api/v1/me')
 
+    dispatch({ type: LOAD_SUCCESS, payload: res.data.user })
+  } catch (error) {
+    console.error("Error:", error);
+    dispatch({ type: LOAD_FAIL, payload:error.response.data.error })
+  }
+}
+
+//for logout the user
+export const logout = () =>async(dispatch)=>{
+  try {
+   
+    await axios.get('/api/v1/logout')
+
+    dispatch({ type: LOGOUT_SUCCESS })
+  } catch (error) {
+    console.error("Error:", error);
+    dispatch({ type: LOGOUT_FAIL, payload:error.response.data.error })
+  }
+}
 // Clearing Errors
 export const clearErrors = () => async (dispatch) => {
   dispatch({

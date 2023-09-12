@@ -13,19 +13,27 @@ import Search from './layout/Search/Search';
 import Navbarpage from './components/navbar/Navbarpage';
 import LoginsignUp from './components/User/Login/LoginsignUp';
 import Profile from './components/User/Profile/Profile';
+import store from "./Store/store"
+import { loadUser } from './actions/userAction';
+import { useSelector } from 'react-redux';
+/* import UserOptions from './components/navbar/UserOptions'; */
 function App() {
+const {isAuthenticated,user} = useSelector(state=>state.user)
   useEffect(() => {
       WebFont.load({
     google: {
       families: ['Droid Sans', 'Droid Serif']
     },
   });
+store.dispatch((loadUser()))
   }, [])
   return (
     <>
     <BrowserRouter>
   
-   <Navbarpage/>
+   <Navbarpage isAuthenticated={isAuthenticated} user={user}/>
+   {/* {isAuthenticated && <UserOptions user={user}/>} */}
+   
    <Routes>
      <Route path="/" element={<Home />}/> 
      <Route exact path="/product/:id" element={<Productdetails />}/>
