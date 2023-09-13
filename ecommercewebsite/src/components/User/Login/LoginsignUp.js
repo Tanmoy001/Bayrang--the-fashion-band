@@ -13,7 +13,7 @@ import shopic from "./shopic.jpg"
 import profile from "./Profile.png"
 import { useDispatch, useSelector } from 'react-redux';
 
-function LoginsignUp({history}) {
+function LoginsignUp() {
     
   const navigate  = useNavigate ();
     const dispatch = useDispatch();

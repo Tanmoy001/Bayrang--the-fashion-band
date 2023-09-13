@@ -50,9 +50,9 @@ function Products() {
   
     
   return (
-    <>
+    <div className='allproducts_section'>
       {loading?<Loader/>:
-      <>
+      <div className='allproducts'>
      
       
        <MetaData title="PRODUCTS -- ECOMMERCE" />
@@ -108,8 +108,8 @@ function Products() {
                 )}
          
 
-      </>}
-    </>
+      </div>}
+    </div>
   )
 }
 

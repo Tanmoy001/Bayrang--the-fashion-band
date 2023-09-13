@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import'./userOptions.css'
 //importing icons from materialui
 import { SpeedDial,SpeedDialAction } from '@mui/material';
@@ -7,11 +7,31 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { IoLogOutOutline } from 'react-icons/io5'; 
 import { MdOutlineFeaturedPlayList } from 'react-icons/md'; 
 import { CgProfile } from 'react-icons/cg'; 
-import { Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../actions/userAction';
+import { useNavigate  } from 'react-router-dom';
 function UserOptions({isAuthenticated,user}) {
+    const navigate  = useNavigate ();
     const dispatch = useDispatch();
+    const orders =(e)=>{
+        e.preventDefault();
+        navigate(`/orders`)
+    }
+    const account =(e)=>{
+        e.preventDefault();
+        navigate(`/account`)
+    }
+    const logoutUser =(e)=>{
+        dispatch(logout())
+        
+/*         window.location=`/login`
+        e.preventDefault();
+        alert("Logout successfully")
+ */    }
+    const dashboard=(e)=>{
+        e.preventDefault();
+        navigate(`/dashboard`)
+    }
     const options=[
         
         {icon:<MdOutlineFeaturedPlayList/> ,name:"Orders",func:orders},
@@ -24,31 +44,24 @@ function UserOptions({isAuthenticated,user}) {
         
         options.unshift({icon:<LuLayoutDashboard/> ,name:"DashBoard",func:dashboard},)
     }
-    function dashboard(){
-        Navigate('./dashboard')
-    }
-    function orders(){
-        Navigate('/orders')
-    }
-    function account(){
-        Navigate('./account')
-    }
-    function logoutUser(){
-        dispatch(logout())
-        alert.success("Logout successfully")
-    }
+    
     const [open, setOpen] = useState(false)
+    useEffect(() => {
+        if(!isAuthenticated){
+            navigate(`/login`);}
+    }, [isAuthenticated,navigate])
   return (
     <>
       
              {!isAuthenticated &&(
-      <CgProfile/>  
+      <CgProfile style={{height:'2vmax',width:'5rem'}}/>  
         )}
         {isAuthenticated &&(
             
         <div>
             {console.log(user.avatar.url)}
             <SpeedDial
+            className='speedDial'
             ariaLabel='SpeedDial tooltrip example'
             onClose={()=>setOpen(false)}
             onOpen={()=>setOpen(true)}

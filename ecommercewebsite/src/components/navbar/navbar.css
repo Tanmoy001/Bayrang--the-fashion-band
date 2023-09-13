@@ -5,3 +5,6 @@
 .iconfunc{
     display: flex;
 }
+.nav-link{
+    align-items: center;
+}

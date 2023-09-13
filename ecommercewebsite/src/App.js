@@ -16,6 +16,7 @@ import Profile from './components/User/Profile/Profile';
 import store from "./Store/store"
 import { loadUser } from './actions/userAction';
 import { useSelector } from 'react-redux';
+import Dashboard from './components/Admin/Dashboard';
 /* import UserOptions from './components/navbar/UserOptions'; */
 function App() {
 const {isAuthenticated,user} = useSelector(state=>state.user)
@@ -45,7 +46,8 @@ store.dispatch((loadUser()))
      <Route exact path="/search" element={ <Search/>}/>
      <Route exact path="/login" element={ <LoginsignUp/>}/>
      
-     <Route exact path="/account" element={ <Profile/>}/>
+     <Route exact path="/account" element={isAuthenticated&&<Profile user={user}/>}/>
+     <Route exact path="/dashboard" element={ <Dashboard/>}/>
   
     </Routes>
     

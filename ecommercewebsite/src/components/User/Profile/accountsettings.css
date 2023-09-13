@@ -1,0 +1,61 @@
+/* AccountSettings.css */
+.avatar_container{
+    justify-content: center;
+    width: 40%;
+    display: flex;
+}
+/* .account-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+  } */
+  .account-avatar>img{
+height: 100px;
+width: 100px;  
+}
+.profillename{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+.account-settings {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .setting-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .setting-label {
+    flex-basis: 30%;
+    font-weight: bold;
+  }
+  
+  .setting-value {
+    flex-grow: 1;
+  }
+  
+  .setting-actions {
+    text-align: right;
+    margin-top: 20px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

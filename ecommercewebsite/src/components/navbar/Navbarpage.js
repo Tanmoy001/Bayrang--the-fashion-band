@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React/* , { useState, useEffect } */ from 'react'
 import './navbar.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -14,25 +14,25 @@ import {
 import UserOptions from './UserOptions';
   
 function Navbarpage({isAuthenticated,user}) {
-  const [isVisible, setIsVisible] = useState(true);
+ /*  const [isVisible, setIsVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
       const isVisible = prevScrollPos > currentScrollPos;
+
       setPrevScrollPos(currentScrollPos);
       setIsVisible(isVisible);
     };
 
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [prevScrollPos]); 
+  }, [prevScrollPos]);  */
   return (
-     <nav style={{ display: isVisible ? 'block' : 'none' }}> 
+     <nav style={{ position:"fixed",width:"100vmax",zIndex:"30"}}> 
     <Navbar className='navbar' collapseOnSelect expand="lg" bg="blue" variant="dark">
     <Container>
         <GiCoins style={{marginRight: "15px",height:'20px',width:'20px'}}/>
