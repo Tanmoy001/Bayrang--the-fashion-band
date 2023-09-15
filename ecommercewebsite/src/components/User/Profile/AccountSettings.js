@@ -1,35 +1,60 @@
 import React, { Fragment, useEffect,useState  } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MetaData from "../../../layout/MetaData";
 import Loader from "../../../layout/Loader/Loader";
 import'./accountsettings.css'
 /* import { Link } from "react-router-dom"; */
 
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
+import { updateProfile } from "../../../actions/userAction";
 function AccountSettings() {
 
-  const { user, loading, isAuthenticated } = useSelector((state) => state.user);
+const { user, loading, isAuthenticated } = useSelector((state) => state.user);
 const navigate = useNavigate();
 const [isEditing, setIsEditing] = useState(false);
 const [editedUser, setEditedUser] = useState({ ...user });
+//ALL THE INFORMATION 
+const [name, setName] = useState(user.name)
+const [email, setEmail] = useState(user.email)
+const [address, setAddress] = useState(user.address)
+const [gender, setGender] = useState(user.gender)
+const [pincode, setPincode] = useState(user.pincode)
+const [phonenumber, setPhonenumber] = useState(user.phonenumber)
+const [altphonenumber, setAltphonenumber] = useState(user.altphonenumber)
 
+const dispatch = useDispatch();
 const handleEditClick = () => {
   setIsEditing(true);
 };
+const handleCancelClick = () => {
+  // Reset the editedUser state or handle any other cancel logic.
+  setEditedUser({ ...user });
+  setIsEditing(false);
+};
 
-const handleSaveClick = () => {
+const handleSaveClick = (e) => {
+  e.preventDefault();
+  const myForm = new FormData();
+  myForm.set("name",name);
+  myForm.set('email', email );
+  myForm.set('address', address ) ;
+  myForm.set('gender', gender ) ;
+  myForm.set('pincode', pincode ) ;
+  myForm.set('phonenumber', phonenumber ) ;
+  myForm.set('altphonenumber', altphonenumber ) ;
+  dispatch(updateProfile(myForm));
+  console.log("profile updated successfully")
+  // Save changes to API here...
+
   // You can implement logic to save the edited user data here.
   // For simplicity, we'll just update the state.
   setIsEditing(false);
 };
 
-const handleChange = (e) => {
-  const { name, value } = e.target;
-  setEditedUser({
-    ...editedUser,
-    [name]: value,
-  });
-};
+
+const changePassword=()=>{
+  navigate("/password/update");
+}
 
 
   useEffect(() => {
@@ -44,32 +69,6 @@ const handleChange = (e) => {
       ) : (
         <Fragment>
           <MetaData title={`${user.name}'s Profile`} />
-          {/* <div className="profileContainer">
-            <div>
-              <h1>My Profile</h1>
-              <img src={user.avatar.url} alt={user.name} />
-              <Link to="/me/update">Edit Profile</Link>
-            </div>
-            <div>
-              <div>
-                <h4>Full Name</h4>
-                <p>{user.name}</p>
-              </div>
-              <div>
-                <h4>Email</h4>
-                <p>{user.email}</p>
-              </div>
-              <div>
-                <h4>Joined On</h4>
-                <p>{String(user.createdAt).substr(0, 10)}</p>
-              </div>
-
-              <div>
-                <Link to="/orders">My Orders</Link>
-                <Link to="/password/update">Change Password</Link>
-              </div>
-            </div>
-          </div> */}
           
            <div className="account-settings">
       <h2>Account Information</h2>
@@ -89,7 +88,7 @@ const handleChange = (e) => {
             <img src={user.avatar.url} alt="User Avatar" />
           )}
         </div>
-        <div className="profillename">Me</div>
+        <div className="profillename">Avatar</div>
         </div>
         </div>
 
@@ -97,7 +96,7 @@ const handleChange = (e) => {
       
       <div className="setting-item">
         
-        <div className="setting-label">Full Name:</div>
+        <div className="setting-label">Full Name</div>
         {isEditing ? (
           <input
             type="text"
@@ -113,7 +112,7 @@ const handleChange = (e) => {
       {/* EMAIL OF THE USER */}
       
       <div className="setting-item">
-        <div className="setting-label">Email:</div>
+        <div className="setting-label">Email</div>
         {isEditing ? (
           <input
             type="email"
@@ -129,7 +128,7 @@ const handleChange = (e) => {
       {/* PHONE NUMBER OF THE USER */}
       
       <div className="setting-item">
-        <div className="setting-label">Phone number:</div>
+        <div className="setting-label">Phone number</div>
         {isEditing ? (
           <input
             type="number"
@@ -146,7 +145,7 @@ const handleChange = (e) => {
        {/*ALTERNATE PHONE NUMBER OF THE USER */}
       
        <div className="setting-item">
-        <div className="setting-label">Alt phone number:</div>
+        <div className="setting-label">Alt phone number</div>
         {isEditing ? (
           <input
             type="number"
@@ -164,7 +163,7 @@ const handleChange = (e) => {
       {/* GENDER OF THE USER */}
       
       <div className="setting-item">
-        <div className="setting-label">Gender:</div>
+        <div className="setting-label">Gender</div>
         {isEditing ? (
           <select name="gender" value={editedUser.gender} onChange={handleChange}>
             <option value="male">Male</option>
@@ -179,7 +178,7 @@ const handleChange = (e) => {
       {/* ADDRESS OF THE USER */}
       
       <div className="setting-item">
-        <div className="setting-label">Address:</div>
+        <div className="setting-label">Address</div>
         {isEditing ? (
           <input
             type="text"
@@ -195,7 +194,7 @@ const handleChange = (e) => {
       {/* PINCODE OF THE USER */}
 
       <div className="setting-item">
-        <div className="setting-label">Pin Code:</div>
+        <div className="setting-label">Pin Code</div>
         {isEditing ? (
           <input
             type="number"
@@ -212,7 +211,7 @@ const handleChange = (e) => {
       {/* JOINED DATE OF THE USER */}
 
       <div className="setting-item">
-        <div className="setting-label">Joined Date:</div>
+        <div className="setting-label">Joined Date</div>
         <div className="setting-value">{user.joinedDate}</div>
       </div>
 
@@ -220,9 +219,16 @@ const handleChange = (e) => {
 
       <div className="setting-actions">
         {isEditing ? (
+           <div className="button_segment">
+            <button onClick={handleCancelClick}>Cancel</button>
           <button onClick={handleSaveClick}>Save</button>
+          </div>
         ) : (
+          <div className="button_segment">
+          <button onClick={changePassword}>Change Password</button>
           <button onClick={handleEditClick}>Edit Profile</button>
+       
+      </div>
         )}
       </div>
     </div>

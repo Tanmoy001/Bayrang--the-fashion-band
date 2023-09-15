@@ -17,3 +17,9 @@
     height: 40px;
     width: 40px;
 }
+.MuiButtonBase-root>svg{
+    color: #de1515;
+}
+.MuiButtonBase-root>svg:hover{
+    color: blueviolet;
+}

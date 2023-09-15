@@ -43,13 +43,25 @@ import React, { useState } from 'react';
 import UseronTop from './UseronTop';
 import'./profile.css'
 import AccountSettings from './AccountSettings';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../actions/userAction';
+import { HiTemplate } from 'react-icons/hi';
+import { MdAccountBox } from 'react-icons/md';
+import { RiLogoutBoxRLine } from 'react-icons/ri';
 const Profile = ({ user }) => {
+  const dispatch = useDispatch();
   const [selectedTab, setSelectedTab] = useState('orders'); // Default tab
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
   };
-
+ const logout_account=()=>{
+dispatch(logout())
+ }
+ const handleCombinedClick = () => {
+ handleTabClick('logout'); // Call Function 1
+  logout_account(); // Call Function 2
+}; 
   return (
     <div className="profile-container">
       <UseronTop user={user} />
@@ -60,15 +72,20 @@ const Profile = ({ user }) => {
               className={selectedTab === 'orders' ? 'active' : ''}
               onClick={() => handleTabClick('orders')}
             >
+              <HiTemplate/>
               Orders
             </li>
             <li
               className={selectedTab === 'account' ? 'active' : ''}
               onClick={() => handleTabClick('account')}
             >
+              <MdAccountBox/>
               Account Settings
             </li>
-            <li onClick={() => handleTabClick('logout')}>Logout</li>
+           
+            <li onClick={() => handleCombinedClick()}>
+            <RiLogoutBoxRLine/>
+              Logout</li>
           </ul>
         </div>
         <div className="profile-info">

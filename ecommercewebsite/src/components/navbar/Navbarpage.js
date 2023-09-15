@@ -1,4 +1,4 @@
-import React/* , { useState, useEffect } */ from 'react'
+import React, { useState, useEffect } from 'react'
 import './navbar.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -6,14 +6,31 @@ import Navbar from 'react-bootstrap/Navbar';
 import { GiCoins } from 'react-icons/gi';
 
 import { AiOutlineSearch } from 'react-icons/ai';
-/* import { CgProfile } from 'react-icons/cg'; */
+ import { CgProfile } from 'react-icons/cg'; 
 import { BsHandbag } from 'react-icons/bs';
 import {
-    Link
+    Link,NavLink 
   } from "react-router-dom";
 import UserOptions from './UserOptions';
   
 function Navbarpage({isAuthenticated,user}) {
+  const [scrolling, setScrolling] = useState(false);
+
+  // Function to handle scroll events
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
+    // Add a scroll event listener when the component mounts
+    useEffect(() => {
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
  /*  const [isVisible, setIsVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
@@ -32,7 +49,7 @@ function Navbarpage({isAuthenticated,user}) {
     };
   }, [prevScrollPos]);  */
   return (
-     <nav style={{ position:"fixed",width:"100vmax",zIndex:"30"}}> 
+     <nav className={`navbar ${scrolling ? 'scrolling' : ''}`} style={{ position:"fixed",width:"100vmax",zIndex:"30"}}> 
     <Navbar className='navbar' collapseOnSelect expand="lg" bg="blue" variant="dark">
     <Container>
         <GiCoins style={{marginRight: "15px",height:'20px',width:'20px'}}/>
@@ -41,10 +58,18 @@ function Navbarpage({isAuthenticated,user}) {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
             
-        <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
-        <li className="nav-item"><Link className="nav-link" to="/products">Products</Link></li>
-         <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li> 
-        <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
+        <li className="nav-item"><NavLink className="nav-link" to="/" exact="true" activeclassname="active-link">
+  Home
+</NavLink></li>
+        <li className="nav-item"><NavLink className="nav-link" to="/products" activeclassname="active-link">
+  Products
+</NavLink></li>
+         <li className="nav-item"><NavLink className="nav-link" to="/contact" activeclassname="active-link">
+  Contact
+</NavLink></li> 
+        <li className="nav-item"><NavLink className="nav-link" to="/about" activeclassname="active-link">
+  About
+</NavLink></li>
          
           
         </Nav>
@@ -53,8 +78,12 @@ function Navbarpage({isAuthenticated,user}) {
     <div className='iconfunc'>
     <Link className="nav-link" to="/search" style={{justifyContent:'center',display:'flex'}}><AiOutlineSearch style={{height:'2vmax',width:'5rem'}}/></Link>
     <Link className="nav-link" to="/card" style={{justifyContent:'center',display:'flex'}}><BsHandbag style={{height:'2vmax',width:'5rem'}}/></Link>
-    <Link className="nav-link" to="/login" style={{justifyContent:'center',display:'flex'}}><UserOptions isAuthenticated={isAuthenticated}user={user} style={{height:'2vmax',width:'5rem'}}/></Link>
-           
+    {!isAuthenticated &&(
+      <Link className="nav-link" to="/login" style={{justifyContent:'center',display:'flex'}}><CgProfile style={{height:'2vmax',width:'5rem'}}/></Link>
+   )}
+    {isAuthenticated &&(
+    <Link className="nav-link" to="/account" style={{justifyContent:'center',display:'flex'}}><UserOptions isAuthenticated={isAuthenticated}user={user} style={{height:'2vmax',width:'5rem'}}/></Link>
+    )}
                 {/*   <a href='/card'style={{justifyContent:'center',display:'flex'}}><BsHandbag style={{height:'2vmax',width:'5rem'}}/></a>
                   <a href='/login'style={{justifyContent:'center',display:'flex'}}><CgProfile style={{height:'2vmax',width:'5rem'}}/></a> */}
                   </div>

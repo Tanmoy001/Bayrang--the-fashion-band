@@ -1,6 +1,7 @@
 import axios from "axios"
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL, CLEAR_ERRORS, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAIL,LOAD_FAIL,
-LOAD_SUCCESS,LOAD_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAIL } from "../constants/userConstant"
+LOAD_SUCCESS,LOAD_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAIL,UPDATE_PROFILE_FAIL,
+UPDATE_PROFILE_REQUEST,UPDATE_PROFILE_SUCCESS } from "../constants/userConstant"
 
 //LOGIN THE USE OR SIGNIN
 
@@ -62,6 +63,26 @@ export const logout = () =>async(dispatch)=>{
     dispatch({ type: LOGOUT_FAIL, payload:error.response.data.error })
   }
 }
+
+//UPDATING THE USER DETAILS OF THE USER 
+
+export const updateProfile = (userData) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_PROFILE_REQUEST })
+    const config = {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    };
+    const res = await axios.put('/api/v1//me/updateprfile',userData , config)
+
+    dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data.user })
+  } catch (error) {
+    console.error("Error:", error);
+    dispatch({ type: UPDATE_PROFILE_FAIL, payload:error.response.data.error })
+  }
+}
+
+
+
 // Clearing Errors
 export const clearErrors = () => async (dispatch) => {
   dispatch({

@@ -53,10 +53,8 @@ function UserOptions({isAuthenticated,user}) {
   return (
     <>
       
-             {!isAuthenticated &&(
-      <CgProfile style={{height:'2vmax',width:'5rem'}}/>  
-        )}
-        {isAuthenticated &&(
+            
+       
             
         <div>
             {console.log(user.avatar.url)}
@@ -74,13 +72,13 @@ function UserOptions({isAuthenticated,user}) {
             />}
             >
                 {options.map((item)=>(
-                   <SpeedDialAction icon={item.icon}tooltipTitle={item.name} onClick={item.func}/>
+                   <SpeedDialAction key={item.name} icon={item.icon}tooltipTitle={item.name} onClick={item.func}/>
                     
                 ))}
             </SpeedDial>
                 
         </div>
-        )}
+       
     </>
   )
 }

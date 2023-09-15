@@ -104,7 +104,12 @@ useEffect(() => {
     <div className="LoginSignupContainer">
     <div className='picture'>
         <img src={shopic} id="photo" alt=''/>
+  
         </div>
+        <div className='bay_icon'>
+        <h2>बे</h2>
+        </div>
+       
     <div className='LoginSignupBox'>
     
         <div>

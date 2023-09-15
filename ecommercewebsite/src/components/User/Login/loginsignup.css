@@ -1,22 +1,22 @@
 .picture{
-    margin-right: 39%;
+    margin-right: 44%;
     overflow: hidden;
     
     box-shadow: inset 20px 20px 20px rgba(0,0,0,0.05), 25px 35px 20px rgba(0,0,0,0.05);
 }
 .picture #photo{
     height: 95vh;
-    width: 60vw;
+    width: 56vw;
 }
 .LoginSignupContainer{
+    padding-top: 5rem;
+    position: relative;
     width: 100vw;
-    height: 95vh;
     max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(231,231,231);
-    position: fixed;
 }
 .LoginSignupBox{
     box-shadow: inset 20px 20px 20px rgba(0,0,0,0.05), 25px 35px 20px rgba(0,0,0,0.05);
@@ -90,9 +90,13 @@ padding-right: 1vmax;
 width: 100%;
 box-sizing: border-box;
 border:1px solid rgba(0, 0,0,0.267);
-border-radius: 4px;
+border-radius: 1rem;
 font:300 0.9vmax  cursive;
 outline: none;
+background-color: transparent;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+background-image: linear-gradient(180deg,transparent 0%,#F6F8FD 114%)!important;
 }
 
 .loginForm > div >svg,
@@ -117,6 +121,7 @@ color:rgba(0, 0,0,0.623);
     color: black;
 }
 #registerImage >img{
+    
     width: 3vmax;
     border-radius: 100%;
 
@@ -175,13 +180,37 @@ background-color: rgb(179,66,46);
   .shiftToRight {
     transform: translateX(100%);
   }
+.bay_icon{
+    margin-right: ;
+}
+.bay_icon>h2{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: #eff0f4;
+    border-radius: 50%;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+    inset -2px -5px 10px rgba(255, 255, 255,1),
+    15px 15px 10px rgba(0, 0, 0, 0.05),
+    15px 15px 10px rgba(0, 0, 0, 0.025);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    opacity: 0;
+    visibility: hidden;
+    
+}
   @media screen and (max-width:900px) {
     .picture{
+        overflow: initial;
+        margin-left: 70px;
         margin-right: 0;
         z-index: 10;
     width: 100%;
     }
     .picture #photo {
+        padding-top: 3rem;
         height: 95vh;
         width: 100vw;
         z-index: 1;
@@ -243,6 +272,13 @@ font-size: 2.8vmax;
 }
 .loginForm>a:hover{
     color: rgb(216, 213, 213);
+}
+
+.loginForm>div>input,
+.signUpForm>div>input   {
+    background-image: linear-gradient(180deg,transparent 0%,#F6F8FD 114%)!important;
+    box-shadow: inset 20px 20px 20px rgba(0,0,0,.05), 25px 35px 20px rgba(0,0,0,.05);
+    height: auto;
 }
 
   }

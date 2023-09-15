@@ -1,7 +1,11 @@
 /* AccountSettings.css */
 .avatar_container{
+  background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    max-width: 100%;
+    margin: 0 auto;
     justify-content: center;
-    width: 40%;
     display: flex;
 }
 /* .account-avatar {
@@ -15,19 +19,32 @@ height: 100px;
 width: 100px;  
 }
 .profillename{
+  
+  font-family: 'Droid Serif';
+  font-size: medium;
     width: 100px;
     display: flex;
     justify-content: center;
 }
 .account-settings {
-    background-color: white;
+  background-color: #f1f3f6;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-width: 100%;
     margin: 0 auto;
   }
+  .account-settings>h2{
+    display: flex;
+    justify-content: center;
+    font-family: 'Droid Serif';
+  }
   
   .setting-item {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    max-width: 100%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
@@ -36,26 +53,34 @@ width: 100px;
   .setting-label {
     flex-basis: 30%;
     font-weight: bold;
+    font-family: 'Droid Sans';
   }
   
   .setting-value {
-    flex-grow: 1;
+    flex-grow: 3;
+    font-family: initial;
   }
   
   .setting-actions {
     text-align: right;
     margin-top: 20px;
   }
+  .button_segment{
+  gap: 5px;
+  }
   
-  button {
-    background-color: #007bff;
+ .setting-actions> button,.button_segment>button {
+    background-color: tomato;
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    border-radius: 8px;
+    margin-right: 5px;
   }
   
-  button:hover {
-    background-color: #0056b3;
+  .setting-actions>button,
+  .button_segment>button:hover {
+    background-color: #E02B20;
   }
   
