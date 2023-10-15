@@ -1,0 +1,63 @@
+.not_found{
+    padding-top: 5rem;
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.not-found-container {
+  font-family: Roboto, Arial, sans-serif;
+  position: absolute;
+  z-index: 10;
+    width: 100%;
+    text-align: center;
+    padding: 50px;
+    background-color:transparent; /* Blue background color */
+    color: black; /* White text color */
+  }
+  
+  h1 {
+    font-size: 36px;
+    color: black;
+    font-weight: 600;
+    font-style: oblique;
+  }
+  .back_home{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .home-link {
+    border-radius: 10px;
+    background-color: tomato;
+    padding: 10px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    color: white; /* White text color for the link */
+    text-decoration: none;
+  }
+  
+  /* 
+  .home-link:hover {
+    text-decoration: underline;
+  } */
+  
+  /* Style the home icon */
+  .home-link svg {
+    width: 34px;
+    height: 34px;
+    margin-right: 8px;
+  }
+  .home-link span {
+    font-size: medium;
+    font-weight: 600;
+    font-family: 'Droid Serif';
+  }
+  .image_container{
+    padding-bottom: 4rem;
+  }

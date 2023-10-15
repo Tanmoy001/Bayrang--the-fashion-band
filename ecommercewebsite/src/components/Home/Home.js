@@ -7,6 +7,14 @@ import {getProducthome} from "../../actions/productAction"
 import{useSelector,useDispatch} from "react-redux"
 import { useEffect } from 'react'
 import Loader from '../../layout/Loader/Loader'
+
+import Menonearth from './menonearth/Menonearth'
+import Merchandise from '../../contextapi/merchandise/Merchandise'
+import Womenonearth from './womenonearth/Womenonearth'
+import Slider from '../../contextapi/slider/Slider'
+import Topcollectionhome from './TopCollection/Topcollectionhome'
+import Spectacles from './spectacles/Spectacles'
+import Specialeditionhome from './Specialaedition/Specialeditionhome'
 /* const product={
     name:"tshirt",
     price:1200,
@@ -30,6 +38,14 @@ function Home() {
         <>
         {loading?(<Loader/>):(
             <>
+             <Slider/>
+            <Topcollectionhome/>
+            <Specialeditionhome/>
+            <Merchandise/>
+            <Menonearth/>
+            <Womenonearth/>
+            
+            <Spectacles/>
         <MetaData title="Bayrang-Home"/>
         <div className='banner'>
             <p>Welcome to the Bayrang</p>
@@ -41,6 +57,7 @@ function Home() {
             </a>
             
         </div>
+
         <div className='container_product' id='container'>
             
         <h2 className='homeHeading'>Featured Product</h2>

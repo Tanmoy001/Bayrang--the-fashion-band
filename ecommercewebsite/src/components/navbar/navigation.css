@@ -1,0 +1,55 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 20;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.men:hover .men_content {display: block;}
+.women:hover .women_content {display: block;}
+
+.kid:hover .kid_content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.contentnav{
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    transition: 10s;
+  /* position: absolute; */
+  padding-top: 47px;
+}
+
+.contentnav{
+background: white;
+z-index: 10;
+transition: 1s;
+}
+.contentnav .navbar{
+  padding: 0px;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+  color: brown;
+  background-color: transparent;
+  border-color: transparent;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link:hover{
+  border-color: transparent;
+
+}

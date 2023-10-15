@@ -18,7 +18,7 @@ function Navbarpage({isAuthenticated,user}) {
 
   // Function to handle scroll events
   const handleScroll = () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 10) {
       setScrolling(true);
     } else {
       setScrolling(false);
@@ -49,8 +49,9 @@ function Navbarpage({isAuthenticated,user}) {
     };
   }, [prevScrollPos]);  */
   return (
-     <nav className={`navbar ${scrolling ? 'scrolling' : ''}`} style={{ position:"fixed",width:"100vmax",zIndex:"30"}}> 
-    <Navbar className='navbar' collapseOnSelect expand="lg" bg="blue" variant="dark">
+    <div className='nav_header'>
+     <nav className={`navbar Navbar_first ${scrolling ? 'scrolling' : ''}`} style={{ position:"fixed",width:"100vmax",zIndex:"30"}}> 
+    <Navbar className='navbar Navbar_sec'  collapseOnSelect expand="lg" bg="blue" variant="dark">
     <Container>
         <GiCoins style={{marginRight: "15px",height:'20px',width:'20px'}}/>
       <Navbar.Brand>BayRang</Navbar.Brand>
@@ -76,10 +77,10 @@ function Navbarpage({isAuthenticated,user}) {
         <div className="form-check form-switch">
     {/*   <Button variant="outline-success">Search</Button>  */}
     <div className='iconfunc'>
-    <Link className="nav-link" to="/search" style={{justifyContent:'center',display:'flex'}}><AiOutlineSearch style={{height:'2vmax',width:'5rem'}}/></Link>
-    <Link className="nav-link" to="/card" style={{justifyContent:'center',display:'flex'}}><BsHandbag style={{height:'2vmax',width:'5rem'}}/></Link>
+    <Link className="nav-link" to="/search" style={{justifyContent:'center',display:'flex'}}><AiOutlineSearch style={{height:'35px',width:'1.5rem'}}/></Link>
+    <Link className="nav-link" to="/card" style={{justifyContent:'center',display:'flex'}}><BsHandbag style={{height:'2vmax',width:'1.5rem'}}/></Link>
     {!isAuthenticated &&(
-      <Link className="nav-link" to="/login" style={{justifyContent:'center',display:'flex'}}><CgProfile style={{height:'2vmax',width:'5rem'}}/></Link>
+      <Link className="nav-link" to="/login" style={{justifyContent:'center',display:'flex'}}><CgProfile style={{height:'2vmax',width:'1.5rem'}}/></Link>
    )}
     {isAuthenticated &&(
     <Link className="nav-link" to="/account" style={{justifyContent:'center',display:'flex'}}><UserOptions isAuthenticated={isAuthenticated}user={user} style={{height:'2vmax',width:'5rem'}}/></Link>
@@ -99,6 +100,7 @@ function Navbarpage({isAuthenticated,user}) {
     </Container>
   </Navbar>
    </nav> 
+   </div>
   )
 }
 

@@ -12,9 +12,9 @@ exports.registerUser = catchAsyncError( async(req,res,next)=>{
         width:150,
         crop:"scale",
     })
-   const{name,email,password}=req.body;
+   const{name,email,password,phonenumber}=req.body;
     const user = await User.create({
-        name,email,password,avatar:{
+        name,email,password,phonenumber,avatar:{
             public_id:myCloud.public_id,
             url:myCloud.secure_url,
         }
@@ -163,6 +163,10 @@ exports.updateUserProfile = catchAsyncError(async(req,res,next)=>{
     const fieldsToUpdate={
         name:req.body.name,
         email:req.body.email,
+        phonenumber:req.body.phonenumber,
+        altphonenumber:req.body.altphonenumber,
+        gender:req.body.gender,
+        
     };
     const updatedUser=await User.findByIdAndUpdate(req.user.id,fieldsToUpdate,{
         new: true,

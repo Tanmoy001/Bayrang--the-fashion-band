@@ -1,0 +1,25 @@
+.Spectacles .title{
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-family: cursive;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+
+}
+.Spectacles .kids_collection{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.Spectacles .kids_collection .topcollection{
+height: 18rem;
+}
+.Spectacles .kids_collection .topcollection img{
+    object-fit: cover;
+    }
+     
+.Spectacles .kids_collection .topcollection img:hover{
+    object-fit: none;
+    }
+    

@@ -26,9 +26,10 @@ function LoginsignUp() {
 const [user, setUser] = useState({
     name:"",
     email:"",
-    password:""
+    password:"",
+    phonenumber:""
 })
-const {name,email,password}=user;
+const {name,email,password,phonenumber}=user;
 const [avatar, setAvatar] = useState(profile);
 const [avatarPreview, setAvatarPreview] = useState(profile);
 
@@ -43,6 +44,7 @@ const registerSubmit=(e)=>{
     const myForm = new FormData();
     myForm.set("name",name);
     myForm.set("email",email);
+    myForm.set("phonenumber",phonenumber)
     myForm.set("password",password);
     myForm.set("avatar",avatar);
     dispatch(register(myForm))
@@ -126,7 +128,7 @@ useEffect(() => {
                 <input type='email'placeholder='Email'required value={loginEmail}
                 onChange={(event)=>{setloginEmail(event.target.value)}}/>
             </div>
-            <div className='loginPassword'>
+            <div className='phoneNumber'>
                <PiPasswordLight/>
              {/*    Password: */}
                 <input type='password' placeholder='PAS**ORD' required value={loginPassword}
@@ -146,6 +148,17 @@ useEffect(() => {
                     required
                     name="name"
                     value={name}
+                    onChange={registerDataChange}
+                  />
+            </div>
+            <div className='phoneNumber'>
+                <BiLogoGmail/>
+                <input
+                    type="number"
+                    placeholder="Phone Number"
+                    required
+                    name="phonenumber"
+                    value={phonenumber}
                     onChange={registerDataChange}
                   />
             </div>

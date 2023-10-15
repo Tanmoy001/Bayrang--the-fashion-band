@@ -1,0 +1,11 @@
+.topcollectionhome .title{
+    width: 100%;
+    justify-content: center;
+    font-family: cursive;
+    margin-top: 1.5rem;
+    margin-bottom: 1.3rem;
+}
+.topcollectionhome .collectiononhome{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}

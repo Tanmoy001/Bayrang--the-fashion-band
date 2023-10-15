@@ -16,6 +16,8 @@ const userSchema = new mongoose.Schema({
         unique:true,
         validate:[validator.isEmail,"Please enter a valid email"]
     },
+    
+
     password:{
         type:String,
         required:[true,"Please Enter Your Password"],
@@ -36,8 +38,20 @@ const userSchema = new mongoose.Schema({
         type:String,
         default:"user",
     },
+    
     createdAt:{
         type : Date ,default:Date.now()
+    },
+    phonenumber:{
+        type:Number,
+        required:[true,"Please Enter Your Phone Number"],
+        minLength:[10,"Phone number should have 10 digits"],
+       /*  select:false  */   
+    },
+    altphonenumber:{
+        type:Number,
+        minLength:[10,"Phone number should have 10 digits"],
+       /*  select:false   */  
     },
     resetPasswordToken:String,
     resetPasswordExpire:Date,

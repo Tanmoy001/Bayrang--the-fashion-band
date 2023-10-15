@@ -1,0 +1,128 @@
+/* Poster Container */
+.poster-container {
+    overflow: hidden;
+    padding-top: 5.3rem;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Poster Image */
+  .poster-image {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  /* Shop Now Container */
+  .shop-now {
+    /* overflow: hidden; */
+    gap: 30px;
+    padding-top: 5.3rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 90%;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    
+    box-sizing: border-box;
+    z-index: 10;
+    border-right: 2px solid white;
+    border-radius: 2px;
+  }
+  
+  /* Shop Button */
+  .shop-button {
+    width: 62px;
+    height: 60px;
+    display: flex;
+    background-color: tomato;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  .shop-button >svg{
+    height: 27px;
+    width: 40px;
+}
+  /* Vertical Text */
+  .vertical-text {
+    padding: 16.5px;
+    font-size: larger;
+    background: rgb(238,221,130);
+   
+    color: white;
+    font-weight: 500;
+    transform: rotate(270deg);
+    text-orientation: mixed;
+    white-space: nowrap;
+  }
+  /* ... Previous styles ... */
+
+/* Circular Button */
+.circular-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    
+    padding-bottom: 2%;
+    right: 10px;
+    z-index: 10;
+  }
+  
+  /* Circle Container */
+  .circle {
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Button Text */
+  .button-text {
+    height: 33%;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: end;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  /* Down Arrow */
+  .down-arrow {
+    font-size: 20px;
+    margin-top: 5px;
+  }
+  .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  
+  

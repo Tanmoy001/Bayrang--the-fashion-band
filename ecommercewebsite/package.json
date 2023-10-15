@@ -29,6 +29,7 @@
     "react-spinners": "^0.13.8",
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
+    "swiper": "^9.4.1",
     "web-vitals": "^2.1.4",
     "webfontloader": "^1.6.28"
   },

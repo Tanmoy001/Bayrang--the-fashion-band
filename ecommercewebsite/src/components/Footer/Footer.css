@@ -1,63 +1,30 @@
-footer{
-  padding: 2vmax;
-  background-color: rgb(34,33,33);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.footer{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 2.5rem;
+    /* margin-bottom: 2rem; */
+    background: #d8dfed;
 }
-.leftFooter{
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.footer .container .row h4{
+    font-family: cursive;
+    font-weight: 600;
 }
-.leftFooter>h4{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+.list-unstyled  a{
+    text-decoration: none;
 }
-.leftFooter>p{
-  text-align: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.list-unstyled svg{
+    margin-left: 8px;
+    margin-right: 8px;
 }
-.leftFooter>img{
-  width: 10vmax;
-  margin: 1vmax;
-  cursor: pointer;
+.lastcontent p{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: large;
+    font-weight:500;
 }
-.midFooter{
-  width: 60%;
-  text-align: center;
-}
-.midFooter>h1{
-  color: red;
-  font-size: 4vmax;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.midFooter>p{
-  max-width: 60%;
-  margin: 1vmax auto;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.rightFooter{
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.rightFooter>h4{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 1.4vmax;
-  text-decoration: underline;
-}
-.rightFooter>a{
-  text-decoration: none;
-  color: white;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 1.4vmax;
-  margin: 0.5vmax ;
-  transition: 0.5s;
-}
-.rightFooter>a:hover{
-  color: aqua;
+.lastcontent a{
+    text-decoration: none;
+    justify-content: center;
 }

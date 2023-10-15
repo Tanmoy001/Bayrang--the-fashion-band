@@ -1,21 +1,23 @@
 .speedDial{
 
     position: absolute;
-    right: 5vmax;
-    top: 1vmax;
+    /* right: 5vmax; */
+     top: 0vmax; 
 }
 .speedDialIcon{
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 100%;
 }
 .MuiSpeedDial-root{
     padding-right: 9px;
-    padding-top: 8px;
+     padding-top: 5px; 
 }
 .MuiSpeedDial-root>button{
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
+    
+    border-radius: 100%;
 }
 .MuiButtonBase-root>svg{
     color: #de1515;

@@ -43,6 +43,7 @@ export const loadUser = () =>async(dispatch)=>{
     dispatch({ type: LOAD_REQUEST })
    
     const res = await axios.get('/api/v1/me')
+    console.log(res)
 
     dispatch({ type: LOAD_SUCCESS, payload: res.data.user })
   } catch (error) {
@@ -73,8 +74,9 @@ export const updateProfile = (userData) => async (dispatch) => {
       headers: { 'Content-Type': 'multipart/form-data' }
     };
     const res = await axios.put('/api/v1//me/updateprfile',userData , config)
+    console.log(res);
 
-    dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data.user })
+    dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data.success })
   } catch (error) {
     console.error("Error:", error);
     dispatch({ type: UPDATE_PROFILE_FAIL, payload:error.response.data.error })
