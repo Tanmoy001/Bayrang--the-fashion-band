@@ -62,9 +62,9 @@ function Navbarpage({isAuthenticated,user}) {
         <li className="nav-item"><NavLink className="nav-link" to="/" exact="true" activeclassname="active-link">
   Home
 </NavLink></li>
-        <li className="nav-item"><NavLink className="nav-link" to="/products" activeclassname="active-link">
+        {/* <li className="nav-item"><NavLink className="nav-link" to="/products" activeclassname="active-link">
   Products
-</NavLink></li>
+</NavLink></li> */}
          <li className="nav-item"><NavLink className="nav-link" to="/contact" activeclassname="active-link">
   Contact
 </NavLink></li> 
@@ -83,8 +83,10 @@ function Navbarpage({isAuthenticated,user}) {
       <Link className="nav-link" to="/login" style={{justifyContent:'center',display:'flex'}}><CgProfile style={{height:'2vmax',width:'1.5rem'}}/></Link>
    )}
     {isAuthenticated &&(
-    <Link className="nav-link" to="/account" style={{justifyContent:'center',display:'flex'}}><UserOptions isAuthenticated={isAuthenticated}user={user} style={{height:'2vmax',width:'5rem'}}/></Link>
-    )}
+    // <Link className="nav-link" to="/account" style={{justifyContent:'center',display:'flex'}}><UserOptions isAuthenticated={isAuthenticated}user={user} style={{height:'2vmax',width:'5rem'}}/></Link>
+    <Link className="nav-link" to="/account" style={{justifyContent:'center',display:'flex'}}><img src={user.avatar.url } alt='profile' style={{height:'32px',width:'32px',borderRadius:'50%'}}/></Link>
+  
+   )}
                 {/*   <a href='/card'style={{justifyContent:'center',display:'flex'}}><BsHandbag style={{height:'2vmax',width:'5rem'}}/></a>
                   <a href='/login'style={{justifyContent:'center',display:'flex'}}><CgProfile style={{height:'2vmax',width:'5rem'}}/></a> */}
                   </div>

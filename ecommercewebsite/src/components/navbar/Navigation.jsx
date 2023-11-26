@@ -30,9 +30,9 @@ function Navigation() {
    
     <Nav variant="tabs" className="justify-content-center navbar"  defaultActiveKey="/home">
    
-      <Nav.Item>
+      {/* <Nav.Item>
         <Nav.Link href="/home">HOME</Nav.Link> 
-      </Nav.Item>
+      </Nav.Item> */}
       <Nav.Item>
         <div className='dropdown men'>
         <Nav.Link eventKey="link-1">MEN</Nav.Link>

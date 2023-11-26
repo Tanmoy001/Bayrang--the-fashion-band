@@ -73,7 +73,7 @@ export const updateProfile = (userData) => async (dispatch) => {
     const config = {
       headers: { 'Content-Type': 'multipart/form-data' }
     };
-    const res = await axios.put('/api/v1//me/updateprfile',userData , config)
+    const res = await axios.put('/api/v1/me/updateprofile',userData , config)
     console.log(res);
 
     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data.success })

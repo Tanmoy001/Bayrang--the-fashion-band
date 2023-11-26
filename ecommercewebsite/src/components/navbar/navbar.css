@@ -12,6 +12,7 @@
 }
 .Navbar_sec{
     height: 37px;
+    padding-bottom: 0;
 }
 .scrolling{
     background-image: #fff;
@@ -59,4 +60,23 @@
  transition: width 2s;
 }
 
+@media screen and (max-width:982px){
+    .container{
+        margin: 0vmax auto;
+      }
+      .Navbar_sec{
+        padding-top: 0;
+        height: 40px;
+        padding-bottom: 0;
+    }
+    .navbar-collapse{
+        background-color: white;
+        border-radius:1rem;
+    }
+    .me-auto{
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+    }
   

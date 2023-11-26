@@ -50,9 +50,22 @@ const userSchema = new mongoose.Schema({
     },
     altphonenumber:{
         type:Number,
-        minLength:[10,"Phone number should have 10 digits"],
-       /*  select:false   */  
+        maxLength:[10,"Phone number should have 10 digits"],
+       minLength:[10,"Phone number should have 10 digits"]
+        /*  select:false   */  
     },
+    address:{
+        type:String,
+        default:"Null"
+    },
+    pincode:{
+        type:Number,
+
+    },
+    gender:{
+        type:String,
+    },
+
     resetPasswordToken:String,
     resetPasswordExpire:Date,
 

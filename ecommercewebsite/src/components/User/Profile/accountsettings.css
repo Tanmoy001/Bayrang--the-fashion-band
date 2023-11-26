@@ -19,10 +19,9 @@ height: 100px;
 width: 100px;  
 }
 .profillename{
-  
+  width: 100%;
   font-family: 'Droid Serif';
   font-size: medium;
-    width: 100px;
     display: flex;
     justify-content: center;
 }
@@ -91,12 +90,14 @@ width: 100px;
 
 }
 #registerImage >input{
+  margin: 10px;
 display: flex;
 padding: 0;
 }
 #registerImage>input::file-selector-button{
+
     cursor: pointer;
-    width: 100%;
+    /* width: 100%; */
     z-index: 2;
     height: 5vmax;
     margin: 0%;
@@ -110,4 +111,11 @@ padding: 0;
 
 #registerImage>input::file-selector-button:hover{
 background-color: rgb(235,235,235);
+}
+
+.avatar-upload{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }

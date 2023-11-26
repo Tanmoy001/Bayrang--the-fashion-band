@@ -16,7 +16,7 @@ router.route("/me").get(isAuthenticatedUser,getUserDetails);
 
 router.route("/me/updatepassword").put(isAuthenticatedUser,updatePassword);
 
-router.route("/me/updateprfile").put(isAuthenticatedUser,updateUserProfile);
+router.route("/me/updateprofile").put(isAuthenticatedUser,updateUserProfile);
 
 //admin panal
 

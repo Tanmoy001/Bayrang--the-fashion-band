@@ -168,6 +168,20 @@ exports.updateUserProfile = catchAsyncError(async(req,res,next)=>{
         gender:req.body.gender,
         
     };
+    if(req.body.avatar!==""){
+        const user = await User.findById(req.user.id);
+        const imageId = user.avatar.public_id;
+        await cloudinary.v2.uploader.destroy(imageId);
+        const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar,{
+            folder:"avatars",
+            width:150,
+            crop:"scale",
+        })
+        fieldsToUpdate.avatar={
+            public_id:myCloud.public_id,
+            url:myCloud.secure_url,
+        }
+    }
     const updatedUser=await User.findByIdAndUpdate(req.user.id,fieldsToUpdate,{
         new: true,
         runValidators: true,

@@ -37,17 +37,9 @@ function Home() {
     return (
         <>
         {loading?(<Loader/>):(
-            <>
-             <Slider/>
-            <Topcollectionhome/>
-            <Specialeditionhome/>
-            <Merchandise/>
-            <Menonearth/>
-            <Womenonearth/>
-            
-            <Spectacles/>
-        <MetaData title="Bayrang-Home"/>
-        <div className='banner'>
+            <div className='home_container'>
+            <MetaData title="Bayrang-Home"/>
+        {/* <div className='banner'>
             <p>Welcome to the Bayrang</p>
             <h1>Find Amazing products below</h1>
             <a href='#container'>
@@ -56,7 +48,16 @@ function Home() {
                 </button>
             </a>
             
-        </div>
+        </div> */}
+             <Slider/>
+            <Topcollectionhome/>
+            <Specialeditionhome/>
+            <Merchandise/>
+            <Menonearth/>
+            <Womenonearth/>
+            
+            <Spectacles/>
+        
 
         <div className='container_product' id='container'>
             
@@ -70,7 +71,7 @@ function Home() {
             )} 
         </div>
         </div>
-        </>
+        </div>
         )}
         </>
     )

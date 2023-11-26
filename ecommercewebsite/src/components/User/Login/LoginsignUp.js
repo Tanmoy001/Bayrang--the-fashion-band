@@ -70,7 +70,7 @@ const registerDataChange = (e) => {
 useEffect(() => {
 
     if(error){
-        alert(error);
+        // alert(error);
         dispatch(clearErrors())
     }
     if(isAuthenticated){

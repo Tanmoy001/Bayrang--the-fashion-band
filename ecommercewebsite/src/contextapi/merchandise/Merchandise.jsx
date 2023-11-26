@@ -60,7 +60,7 @@ function Merchandise() {
         modules={[ Navigation]}
         className="mySwiper"
       >
-         <SwiperSlide> <img src={pic1} alt="slide_image" /></SwiperSlide>
+         <SwiperSlide> <img src={pic1} alt="slide_image"/></SwiperSlide>
         <SwiperSlide> <img src={pic2} alt="slide_image" /></SwiperSlide>
         <SwiperSlide> <img src={pic3} alt="slide_image" /></SwiperSlide>
         <SwiperSlide> <img src={pic4} alt="slide_image" /></SwiperSlide>
