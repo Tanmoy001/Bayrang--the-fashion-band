@@ -138,7 +138,7 @@ exports.updatePassword = catchAsyncError(async(req,res,next)=>{
     //checking the old password
 
     const isPasswordMatched =await user.comparePassword(req.body.oldpassword)
-    console.log(isPasswordMatched)
+    // console.log(isPasswordMatched)
     if(!isPasswordMatched){
         return next(new errorHander("Old password is invalid",401))
     }
@@ -163,9 +163,10 @@ exports.updateUserProfile = catchAsyncError(async(req,res,next)=>{
     const fieldsToUpdate={
         name:req.body.name,
         email:req.body.email,
-        phonenumber:req.body.phonenumber,
-        altphonenumber:req.body.altphonenumber,
+        // phonenumber:req.body.phonenumber,
+        // altphonenumber:req.body.altphonenumber,
         gender:req.body.gender,
+        pincode:req.body.pincode,
         
     };
     if(req.body.avatar!==""){

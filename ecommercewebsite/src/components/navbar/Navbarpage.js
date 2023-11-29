@@ -8,6 +8,7 @@ import { GiCoins } from 'react-icons/gi';
 import { AiOutlineSearch } from 'react-icons/ai';
  import { CgProfile } from 'react-icons/cg'; 
 import { BsHandbag } from 'react-icons/bs';
+import bay from './bay.png'
 import {
     Link,NavLink 
   } from "react-router-dom";
@@ -53,7 +54,8 @@ function Navbarpage({isAuthenticated,user}) {
      <nav className={`navbar Navbar_first ${scrolling ? 'scrolling' : ''}`} style={{ position:"fixed",width:"100vmax",zIndex:"30"}}> 
     <Navbar className='navbar Navbar_sec'  collapseOnSelect expand="lg" bg="blue" variant="dark">
     <Container>
-        <GiCoins style={{marginRight: "15px",height:'20px',width:'20px'}}/>
+      <img src={bay} alt=''style={{marginRight: "4px",height:'35px',width:'35px'}}/>
+        {/* <GiCoins style={{marginRight: "15px",height:'20px',width:'20px'}}/> */}
       <Navbar.Brand>BayRang</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">

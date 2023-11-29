@@ -192,12 +192,16 @@ useEffect(() => {
       </div> */}
 
       <div className="setting-item">
-        <div className="setting-label">Alt phone number</div>
-        {phoneEdit ? (
+        <div className="setting-label">Phone number</div>
+        {
+        isEditing ? (
+          <div className="setting-value">{phonenumber?editedUser.phonenumber: 'Null' }</div>
+        ) : (
+        phoneEdit ? (
           <div className="phonenumberedit">
           <div className="oldnumbersection" style={{display:'flex',gap:'1rem'}}>
           <p>Old number</p>
-          <div className="setting-value">{altphonenumber?editedUser.altphonenumber: 'Null' }</div>
+          <div className="setting-value">{phonenumber?editedUser.phonenumber: 'Null' }</div>
           </div>
           <div className="newaltnumber" style={{display:"flex",gap:"1rem",alignContent:"center",flexWrap:"wrap"}}>
             <p style={{marginBottom:"0px"}}>New number</p>
@@ -220,14 +224,18 @@ useEffect(() => {
             <button style={{padding:"3px 16px"}} onClick={editphonenumber}>Edit</button>
           </div>
           </div>
-        )}
+        ))}
       </div>
 
        {/*ALTERNATE PHONE NUMBER OF THE USER */}
       
        <div className="setting-item">
         <div className="setting-label">Alt phone number</div>
-        {phoneEdit ? (
+        {
+        isEditing ? (
+          <div className="setting-value">{phonenumber?editedUser.phonenumber: 'Null' }</div>
+        ) : (
+          phoneEdit ? (
           <div className="phonenumberedit">
           <div className="oldnumbersection" style={{display:'flex',gap:'1rem'}}>
           <p>Old number</p>
@@ -253,7 +261,7 @@ useEffect(() => {
             <button style={{padding:"3px 16px"}} onClick={editphonenumber}>Edit</button>
           </div>
           </div>
-        )}
+        ))}
       </div>
 
 

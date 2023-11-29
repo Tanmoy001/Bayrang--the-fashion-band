@@ -1,12 +1,13 @@
 .searchbox{
     width: 100vw;
-    height: 90vh;
+    height: 78vh;
     max-width: 100%;
     display: flex;
+    position: inherit;
     justify-content: center;
     align-items: center;
     background-color: white;
-    position: fixed;
+    /* position: fixed; */
 }
 .searchbox>input[type="text"]{
     box-shadow: 0 0 5px rgba(0,0,0,0.274);

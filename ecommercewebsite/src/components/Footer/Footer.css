@@ -1,7 +1,8 @@
 .footer{
+    position: relative;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    margin-top: 2.5rem;
+    /* margin-top: 2.5rem; */
     /* margin-bottom: 2rem; */
     background: #d8dfed;
 }

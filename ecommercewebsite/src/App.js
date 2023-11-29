@@ -20,6 +20,7 @@ import Dashboard from './components/Admin/Dashboard';
 import NotFound from './components/Pagenotfound/NotFound';
 import Poster from './components/Poster/Poster';
 import Navigation from './components/navbar/Navigation';
+import UpdatePassword from './components/User/UpdatePass/UpdatePassword';
 /* import UserOptions from './components/navbar/UserOptions'; */
 function App() {
 const {isAuthenticated,user} = useSelector(state=>state.user)
@@ -53,6 +54,7 @@ store.dispatch((loadUser()))
      <Route path="/account" element={isAuthenticated ? <Profile /> : <Navigate to="/login" />} />
 
     {/*  <Route exact path="/account" element={isAuthenticated&&<Profile/>}/> */}
+    <Route exact path = "/password/update" element={isAuthenticated?<UpdatePassword/>:<Navigate to='/login'/>}/>
      <Route exact path="/dashboard" element={ <Dashboard/>}/>
      <Route exact path="/poster" element={ <Poster/>}/>
      <Route  path="*"  Component={NotFound}/>
