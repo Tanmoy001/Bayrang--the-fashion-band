@@ -1,7 +1,18 @@
+.alert_section{
+width: 100%;
+    justify-content: end;
+    display:flex;
+    position: static;
+    align-items:flex-start;
+    text-align: center;
+    /* height: 100%; */
+    position: absolute;
+    /* margin-top: 5rem; */
+}
 .alert {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+  /* margin-bottom: 0px; */
+    /* top: 20px; */
+    right: 10px;
     padding: 10px;
     border-radius: 4px;
     color: #fff;
@@ -9,7 +20,13 @@
     justify-content: center;
     display: flex;
     gap: 6px;
-    z-index: 25;
+    z-index: 8;
+  }
+  .alert p{
+    margin-bottom: 0rem;
+  }
+  .alert button{
+    border-radius: 50%;
   }
   
   .success {

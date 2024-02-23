@@ -1,62 +1,65 @@
-import React, { useEffect, useRef ,useState} from 'react'
-import '../Login/loginsignup.css'
-import { BiLogoGmail} from 'react-icons/bi';
+import React, { useEffect,useState} from 'react'
+import './updatepassword.css'
 import { PiPasswordLight} from 'react-icons/pi';
-import { RxAvatar} from 'react-icons/rx';
-
 import { useNavigate  } from 'react-router-dom';
-
 import Loader from '../../../layout/Loader/Loader' 
-import { login,clearErrors,register } from '../../../actions/userAction';
-import { Link } from 'react-router-dom'
+import { UPDATE_PASSWORD_RESET } from '../../../constants/userConstant';
 import shopic from "./shopic.jpg"
-// import profile from "./Profile.png"
 import { useDispatch, useSelector } from 'react-redux';
-
+import { clearErrors, updatePassword } from '../../../actions/userAction';
+import MetaData from '../../../layout/MetaData';
+import { FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 function UpdatePassword() {
     
   const navigate  = useNavigate ();
     const dispatch = useDispatch();
-     const {error,loading,isAuthenticated}=useSelector((state)=>state.user)
-    const loginTab = useRef(null)
-    const registerTab = useRef(null)
-    const switcherTab = useRef(null)
+     const {error,loading,isUpdated}=useSelector((state)=>state.user)
     const [oldPassword, setoldPassword] = useState("")
-    const [loginPassword, setloginPassword] = useState("")
-const [user, setUser] = useState({
-    name:"",
-    email:"",
-    password:"",
-    phonenumber:""
-})
-const {name,email,password,phonenumber}=user;
+    const [newPassword, setnewPassword] = useState("")
+    const [confirmPassword, setconfirmPassword] = useState("")
+    const [showPassword1, setShowPassword1] = useState(false);
+    const [showPassword2, setShowPassword2] = useState(false);
+    const [showPassword3, setShowPassword3] = useState(false);
+    const togglePasswordVisibility1 = () => {
+        setShowPassword1(!showPassword1);
+    };
+    const togglePasswordVisibility2 = () => {
+        setShowPassword2(!showPassword2);
+    };
+    const togglePasswordVisibility3 = () => {
+        setShowPassword3(!showPassword3);
+    };
 
-const LoginSubmit=(e)=>{
-    e.preventDefault();
-    dispatch(login(loginEmail,loginPassword));
-    }
-
-const registerSubmit=(e)=>{
-    
-    e.preventDefault();
+const updatePasswordSubmit=(e)=>{
+    // e.preventDefault();
     const myForm = new FormData();
-    myForm.set("name",name);
-    myForm.set("email",email);
+    myForm.set("oldPassword",oldPassword);
+    myForm.set("newPassword",newPassword);
+    myForm.set("confirmPassword",confirmPassword);
+    dispatch(updatePassword(myForm));
         }
 
-const registerDataChange = (e) => {
-
-        setUser((prevState)=>({...user,[e.target.name]:e.target.value}))
-    
-}
-
 useEffect(() => {
+    if(error){
+        alert(error)
+        dispatch(clearErrors)
+    }
+    if(isUpdated){
+        alert("Updated successfully")
+        navigate('/account')
+        dispatch({
+            type:UPDATE_PASSWORD_RESET,
+        })
+    }
 
-}, [dispatch,error,isAuthenticated,navigate ])
+
+
+}, [dispatch,error,navigate,isUpdated])
     return (
         <>
+        <MetaData title="Change Password" />
     {loading ? <Loader/>:(<>
-    <div className="LoginSignupContainer">
+    <div className="UpdatePasswordContainer">
     <div className='picture'>
         <img src={shopic} id="photo" alt=''/>
   
@@ -65,59 +68,73 @@ useEffect(() => {
         <h2>बे</h2>
         </div>
        
-    <div className='LoginSignupBox'>
+    <div className='ChangePasswordBox'>
     
         <div>
         <div className='login_signUp_toggle'>
             <p>बेupdate Password</p>
         </div>
         </div>
-        <form className='loginForm'ref={loginTab} onSubmit={LoginSubmit}>
-            <div className='loginEmail'>
-                <BiLogoGmail/>
-               {/*  Email: */}
-                <input type='password'placeholder='Old password'required value={oldPassword}
-                onChange={(event)=>{setloginEmail(event.target.value)}}/>
-            </div>
-            <div className='phoneNumber'>
+        <form className='changePasswordForm' onSubmit={updatePasswordSubmit}>
+        <div className='oldpassword'>
+            <FaLock />
+            <input
+                type={showPassword1 ? 'text' : 'password'}
+                placeholder='Old password'
+                required
+                value={oldPassword}
+                onChange={(event) => {
+                    setoldPassword(event.target.value);
+                }}
+            />
+            {showPassword1 ? (
+                <FaEyeSlash className='showpass' onClick={togglePasswordVisibility1} />
+            ) : (
+                <FaEye onClick={togglePasswordVisibility1} />
+            )}
+        </div>
+            <div className='newPassword'>
                <PiPasswordLight/>
-             {/*    Password: */}
-                <input type='password' placeholder='PAS**ORD' required value={loginPassword}
-                onChange={(e)=>{setloginPassword(e.target.value)}}/>
-            </div>
+             {/*    newPassword: */}
+             <input
+                type={showPassword2 ? 'text' : 'password'}
+                placeholder='New password'
+                required
+                value={newPassword}
+                onChange={(event) => {
+                    setnewPassword(event.target.value);
+                }}
+            />
+            {showPassword2 ? (
+                <FaEyeSlash className='showpass' onClick={togglePasswordVisibility2} />
+            ) : (
+                <FaEye onClick={togglePasswordVisibility2} />
+            )}
+        </div>
+
+               
+            <div className='confirmPassword'>
+               <PiPasswordLight/>
+               <input
+                type={showPassword3 ? 'text' : 'password'}
+                placeholder='Confirm password'
+                required
+                value={confirmPassword}
+                onChange={(event) => {
+                    setconfirmPassword(event.target.value);
+                }}
+            />
+            {showPassword3 ? (
+                <FaEyeSlash className='showpass' onClick={togglePasswordVisibility3} />
+            ) : (
+                <FaEye onClick={togglePasswordVisibility3} />
+            )}
+        </div>
             
-            <input type='submit' value="Change Password" className='LoginBtn'/>
+            
+            <input type='submit' value="Change Password" className='ChangePasswordBtn'onClick={updatePasswordSubmit()}/>
 
         </form>
-
-        <form className='signUpForm'ref={registerTab} onSubmit={registerSubmit}encType='multipart/form-data'>
-            <div className='name'>
-                <RxAvatar/>
-                <input
-                    type="text"
-                    placeholder="Name"
-                    required
-                    name="name"
-                    value={name}
-                    onChange={registerDataChange}
-                  />
-            </div>
-            <div className='phoneNumber'>
-                <BiLogoGmail/>
-                <input
-                    type="number"
-                    placeholder="Phone Number"
-                    required
-                    name="phonenumber"
-                    value={phonenumber}
-                    onChange={registerDataChange}
-                  />
-            </div>
-            
-
-        </form>
-
-
     </div>
     </div>
     </>)}

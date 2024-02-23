@@ -12,7 +12,26 @@ export const userReducer = ( state = { user : {} }, action) => {
             isAuthenticated:false,
         };
         case LOGIN_SUCCESS:
+          return {
+            ...state,
+            loading:false,
+            isAuthenticated: true ,
+            //            token:action.payload.token,
+            user:action.payload,
+            userstatus:"Welcome"
+                    };
+          
           case REGISTER_SUCCESS:
+          return {
+            ...state,
+            loading:false,
+            isAuthenticated: true ,
+            //            token:action.payload.token,
+            user:action.payload,
+            userstatus:"Register successfull"
+                    };
+
+
             case LOAD_SUCCESS:
           return {
             ...state,
@@ -21,6 +40,7 @@ export const userReducer = ( state = { user : {} }, action) => {
             //            token:action.payload.token,
             user:action.payload,
                     };
+          
           case LOGIN_FAIL:
             case REGISTER_FAIL:
             return {
@@ -42,7 +62,9 @@ export const userReducer = ( state = { user : {} }, action) => {
               return{
               loading:false,
               user:null,
-              isAuthenticated:false
+              isAuthenticated:false,
+              message : action.payload,
+              
               }
               case LOGOUT_FAIL:
                 return{

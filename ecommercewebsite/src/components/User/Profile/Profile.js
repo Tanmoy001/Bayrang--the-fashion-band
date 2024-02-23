@@ -10,10 +10,11 @@ import AccountSettings from './AccountSettings';
 import Loader from '../../../layout/Loader/Loader';
 import { useSelector } from 'react-redux';
 import'./profile.css'
+import Alert from '../../../layout/Alert/Alert';
 
 const Profile = () => {
-  const { user, loading, isAuthenticated } = useSelector((state) => state.user);
-  console.log("helo is tasfds")
+  const { user, loading, isAuthenticated,userstatus } = useSelector((state) => state.user);
+  
   const dispatch = useDispatch();
   const [selectedTab, setSelectedTab] = useState('orders'); // Default tab
   const navigate = useNavigate();
@@ -23,7 +24,9 @@ const Profile = () => {
   };
 
   const logout_account = () => {
-    dispatch(logout());
+     dispatch(logout());
+    
+    <Alert  message="logged out successful" type="success" />;
   };
 
   const handleCombinedClick = () => {
@@ -32,11 +35,15 @@ const Profile = () => {
   };
 
   useEffect(() => {
+    if(user.message){
+      console.log(user.message);
+      <Alert  msg={user.message} type="success" />;
+    }
     if (!isAuthenticated) {
       window.location="/login"
       navigate('/login'); // Redirect to the login page
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate,user]);
 
   return (
     <>
@@ -44,6 +51,7 @@ const Profile = () => {
         <Loader />
       ) : (
         <div className="profile-container">
+          {userstatus?(<Alert  message={userstatus} type="success" />):null}
           <UseronTop user={user} />
           <div className="profile-content">
             <div className="profile-sidebar">

@@ -3,7 +3,6 @@ import './navbar.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { GiCoins } from 'react-icons/gi';
 
 import { AiOutlineSearch } from 'react-icons/ai';
  import { CgProfile } from 'react-icons/cg'; 
@@ -12,7 +11,6 @@ import bay from './bay.png'
 import {
     Link,NavLink 
   } from "react-router-dom";
-import UserOptions from './UserOptions';
   
 function Navbarpage({isAuthenticated,user}) {
   const [scrolling, setScrolling] = useState(false);
@@ -67,8 +65,11 @@ function Navbarpage({isAuthenticated,user}) {
         {/* <li className="nav-item"><NavLink className="nav-link" to="/products" activeclassname="active-link">
   Products
 </NavLink></li> */}
-         <li className="nav-item"><NavLink className="nav-link" to="/contact" activeclassname="active-link">
-  Contact
+         <li className="nav-item"><NavLink className="nav-link" to="/school" activeclassname="active-link">
+  School
+</NavLink></li> 
+<li className="nav-item"><NavLink className="nav-link" to="/office" activeclassname="active-link">
+  Office
 </NavLink></li> 
         <li className="nav-item"><NavLink className="nav-link" to="/about" activeclassname="active-link">
   About

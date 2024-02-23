@@ -137,7 +137,7 @@ exports.updatePassword = catchAsyncError(async(req,res,next)=>{
   
     //checking the old password
 
-    const isPasswordMatched =await user.comparePassword(req.body.oldpassword)
+    const isPasswordMatched =await user.comparePassword(req.body.oldPassword)
     // console.log(isPasswordMatched)
     if(!isPasswordMatched){
         return next(new errorHander("Old password is invalid",401))
@@ -145,12 +145,13 @@ exports.updatePassword = catchAsyncError(async(req,res,next)=>{
 
     //checking the passwords
 
-    if(req.body.newpassword!== req.body.confirmPassword){
+    if(req.body.newPassword!== req.body.confirmPassword){
         return next(new errorHander("Password does not matched",201))
     }
 
-    user.password=req.body.newpassword;
+    user.password=req.body.newPassword;
    await user.save();
+   
    sendToken(user,200,res);
 
 })

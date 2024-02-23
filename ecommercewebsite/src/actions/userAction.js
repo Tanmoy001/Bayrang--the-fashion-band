@@ -1,8 +1,7 @@
 import axios from "axios"
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL, CLEAR_ERRORS, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAIL,LOAD_FAIL,
 LOAD_SUCCESS,LOAD_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAIL,UPDATE_PROFILE_FAIL,
-UPDATE_PROFILE_REQUEST,UPDATE_PROFILE_SUCCESS,UPDATE_PASSWORD_FAIL,UPDATE_PASSWORD_REQUEST,
-UPDATE_PASSWORD_RESET,UPDATE_PASSWORD_SUCCESS } from "../constants/userConstant"
+UPDATE_PROFILE_REQUEST,UPDATE_PROFILE_SUCCESS,UPDATE_PASSWORD_FAIL,UPDATE_PASSWORD_REQUEST,UPDATE_PASSWORD_SUCCESS } from "../constants/userConstant"
 
 //LOGIN THE USE OR SIGNIN
 
@@ -42,10 +41,8 @@ export const register = (userData) => async (dispatch) => {
 export const loadUser = () =>async(dispatch)=>{
   try {
     dispatch({ type: LOAD_REQUEST })
-   
     const res = await axios.get('/api/v1/me')
     console.log(res)
-
     dispatch({ type: LOAD_SUCCESS, payload: res.data.user })
   } catch (error) {
     console.error("Error:", error);
@@ -57,9 +54,9 @@ export const loadUser = () =>async(dispatch)=>{
 export const logout = () =>async(dispatch)=>{
   try {
    
-    await axios.get('/api/v1/logout')
-
-    dispatch({ type: LOGOUT_SUCCESS })
+    const data =  await axios.get('/api/v1/logout')
+    // console.log(data.data.message)
+    dispatch({ type: LOGOUT_SUCCESS ,payload:data.data.message})
   } catch (error) {
     console.error("Error:", error);
     dispatch({ type: LOGOUT_FAIL, payload:error.response.data.error })
@@ -80,7 +77,7 @@ export const updateProfile = (userData) => async (dispatch) => {
     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data.success })
   } catch (error) {
     console.error("Error:", error);
-    dispatch({ type: UPDATE_PROFILE_FAIL, payload:error.response.data.error })
+    dispatch({ type: UPDATE_PROFILE_FAIL, payload:error.response.data.message })
   }
 }
 
@@ -93,12 +90,12 @@ export const updatePassword = (password) => async (dispatch) => {
       headers: { 'Content-Type': 'application/json' }
     };
     const res = await axios.put('/api/v1/me/updatepassword',password , config)
-    console.log(res);
+    // console.log(res);
 
     dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: res.data.success })
   } catch (error) {
     console.error("Error:", error);
-    dispatch({ type: UPDATE_PASSWORD_FAIL, payload:error.response.data.error })
+    dispatch({ type: UPDATE_PASSWORD_FAIL, payload:error.response.data.message})
   }
 }
 

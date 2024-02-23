@@ -12,12 +12,13 @@ import { Link } from 'react-router-dom'
 import shopic from "./shopic.jpg"
 import profile from "./Profile.png"
 import { useDispatch, useSelector } from 'react-redux';
+import Alert from '../../../layout/Alert/Alert';
 
 function LoginsignUp() {
     
   const navigate  = useNavigate ();
     const dispatch = useDispatch();
-     const {error,loading,isAuthenticated}=useSelector((state)=>state.user)
+     const {error,loading,isAuthenticated,message}=useSelector((state)=>state.user)
     const loginTab = useRef(null)
     const registerTab = useRef(null)
     const switcherTab = useRef(null)
@@ -103,7 +104,11 @@ useEffect(() => {
     return (
         <>
     {loading ? <Loader/>:(<>
+    <div className='loginsignupsection'>
+    {message?(
+          <Alert  message="logged out successful" type="success" />):null}
     <div className="LoginSignupContainer">
+        
     <div className='picture'>
         <img src={shopic} id="photo" alt=''/>
   
@@ -194,6 +199,7 @@ useEffect(() => {
         </form>
 
 
+    </div>
     </div>
     </div>
     </>)}
